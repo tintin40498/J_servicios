@@ -109,4 +109,70 @@ function animateNumbers() {
             if (current < target) {
                 current += increment;
                 stat.innerText = Math.ceil(current) + (target === 100 ? '%' : '+');
-                requestAnimationFrame(updateNumber
+                requestAnimationFrame(updateNumber);
+            } else {
+                stat.innerText = target + (target === 100 ? '%' : '+');
+            }
+        };
+        
+        updateNumber();
+    });
+}
+
+// Detectar cuando la sección de stats es visible
+const statsSection = document.querySelector('.stats');
+let animated = false;
+
+if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+                animateNumbers();
+                animated = true;
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(statsSection);
+}
+
+// ==============================================
+// WHATSAPP MESSAGES PERSONALIZADOS
+// ==============================================
+if (whatsappFloat) {
+    whatsappFloat.addEventListener('click', function(e) {
+        // Puedes cambiar el mensaje según la hora del día
+        const hour = new Date().getHours();
+        let message = "Hola! Me comunico desde la web de JServicios. Quisiera solicitar un presupuesto.";
+        
+        if (hour >= 20 || hour <= 8) {
+            message = "Hola! Me comunico fuera del horario de atención. Por favor contactarme cuando estén disponibles.";
+        }
+        
+        this.href = `https://wa.me/5491159085736?text=${encodeURIComponent(message)}`;
+    });
+}
+
+// ==============================================
+// LAZY LOADING PARA IMÁGENES (FALLBACK)
+// ==============================================
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.loading = 'lazy';
+    });
+} else {
+    // Fallback para navegadores antiguos
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+}
+
+// ==============================================
+// PREVENIR RE-ENVÍO DE FORMULARIO (si lo hubiera)
+// ==============================================
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+
+console.log('✅ JServicios - JS cargado correctamente');
