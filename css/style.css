@@ -1,24 +1,43 @@
 /* ==============================================
-   VARIABLES GLOBALES
-============================================= */
+   JServicios · STYLE.CSS PROFESIONAL
+   Versión 2.0 · Optimizado y mejorado
+   ============================================== */
+
+/* ----------------------------------------------
+   1. VARIABLES GLOBALES
+   ---------------------------------------------- */
 :root {
     --brown: #8B4513;
     --brown-dark: #5a2e0c;
+    --brown-light: #a0522d;
     --gold: #FFD700;
     --gold-light: #fff3c9;
+    --gold-dark: #e5c100;
     --white: #ffffff;
-    --gray-light: #f8fafc;
+    --white-soft: #f8fafc;
+    --gray-light: #e2e8f0;
     --gray: #64748b;
-    --dark: #1e293b;
+    --gray-dark: #1e293b;
     --black: #0a0a0a;
-    --shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
-    --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.3);
-    --transition: all 0.3s ease;
+    --black-soft: #1a1a1a;
+    
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-md: 0 10px 30px -10px rgba(0,0,0,0.2);
+    --shadow-lg: 0 20px 40px -10px rgba(0,0,0,0.3);
+    --shadow-gold: 0 10px 30px -5px rgba(255,215,0,0.3);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --border-radius-sm: 8px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 30px;
+    --border-radius-xl: 50px;
 }
 
-/* ==============================================
-   RESET Y BASE
-============================================= */
+/* ----------------------------------------------
+   2. RESET Y BASE
+   ---------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -27,35 +46,41 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    color: var(--dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--gray-dark);
     line-height: 1.6;
     background: linear-gradient(135deg, var(--brown) 0%, #2b1a0a 50%, var(--brown) 100%);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* ==============================================
-   UTILIDADES
-============================================= */
+/* ----------------------------------------------
+   3. UTILIDADES Y COMPONENTES COMUNES
+   ---------------------------------------------- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 30px;
-    border-radius: 8px;
+    padding: 14px 32px;
+    border-radius: var(--border-radius-xl);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 16px;
     transition: var(--transition);
     cursor: pointer;
     border: none;
-    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary {
@@ -64,9 +89,9 @@ body {
 }
 
 .btn-primary:hover {
-    background: #e5c100;
+    background: var(--gold-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-gold);
 }
 
 .btn-outline {
@@ -78,18 +103,43 @@ body {
 .btn-outline:hover {
     background: var(--gold);
     color: var(--brown);
+    transform: translateY(-2px);
+}
+
+.btn-light {
+    background: var(--white);
+    color: var(--brown);
+}
+
+.btn-light:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .section-title {
-    font-size: 42px;
+    font-size: clamp(32px, 5vw, 42px);
     color: var(--gold);
     margin-bottom: 15px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: var(--border-radius-sm);
 }
 
 .section-subtitle {
@@ -101,50 +151,63 @@ body {
 
 .highlight {
     color: var(--gold);
+    font-weight: 700;
 }
 
-/* ==============================================
-   WHATSAPP FLOTANTE
-============================================= */
-.whatsapp-float {
+/* ----------------------------------------------
+   4. WHATSAPP FLOTANTE (MÚLTIPLE)
+   ---------------------------------------------- */
+.whatsapp-container {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #25D366;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.whatsapp-float {
     width: 70px;
     height: 70px;
+    background: #25D366;
+    color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 35px;
     text-decoration: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    z-index: 1000;
+    box-shadow: var(--shadow-lg);
     transition: var(--transition);
     border: 3px solid var(--gold);
+    position: relative;
+}
+
+.whatsapp-float-secondary {
+    background: #128C7E;
 }
 
 .whatsapp-float:hover {
     transform: scale(1.1) rotate(5deg);
-    background: #20b859;
+    box-shadow: var(--shadow-gold);
 }
 
 .whatsapp-tooltip {
     position: absolute;
     right: 80px;
-    background: white;
-    color: var(--dark);
+    background: var(--white);
+    color: var(--gray-dark);
     padding: 8px 15px;
-    border-radius: 30px;
+    border-radius: var(--border-radius-xl);
     font-size: 14px;
     font-weight: 500;
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
     white-space: nowrap;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
+    pointer-events: none;
 }
 
 .whatsapp-float:hover .whatsapp-tooltip {
@@ -153,12 +216,13 @@ body {
     right: 90px;
 }
 
-/* ==============================================
-   HEADER
-============================================= */
+/* ----------------------------------------------
+   5. HEADER Y NAVEGACIÓN
+   ---------------------------------------------- */
 .header {
     background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: white;
     padding: 15px 0;
     border-bottom: 2px solid var(--gold);
@@ -171,23 +235,31 @@ body {
 .header.sticky {
     padding: 10px 0;
     background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(15px);
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .logo a {
     text-decoration: none;
+    display: block;
 }
 
 .logo h1 {
-    font-size: 32px;
+    font-size: clamp(24px, 4vw, 32px);
     font-weight: 700;
     color: var(--gold);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    transition: var(--transition);
+}
+
+.logo h1:hover {
+    color: var(--gold-light);
 }
 
 .logo-sub {
@@ -196,6 +268,7 @@ body {
     margin-top: 2px;
 }
 
+/* Navegación */
 .nav-menu ul {
     display: flex;
     list-style: none;
@@ -207,16 +280,34 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
-    padding: 8px 15px;
-    border-radius: 30px;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-xl);
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background: var(--gold);
+    transition: var(--transition);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    transform: translateX(-50%) scaleX(1);
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    background: var(--gold);
-    color: var(--brown);
+    color: var(--gold);
 }
 
+/* Header acciones */
 .header-actions {
     display: flex;
     align-items: center;
@@ -230,20 +321,41 @@ body {
     font-size: 28px;
     color: var(--gold);
     cursor: pointer;
+    transition: var(--transition);
 }
 
-/* ==============================================
-   HERO
-============================================= */
+.menu-toggle:hover {
+    transform: scale(1.1);
+    color: var(--gold-light);
+}
+
+/* ----------------------------------------------
+   6. HERO SECTION
+   ---------------------------------------------- */
 .hero {
-    padding: 100px 0;
+    padding: 120px 0;
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 50%, rgba(255,215,0,0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-badge {
@@ -251,37 +363,46 @@ body {
     background: var(--gold);
     color: var(--brown);
     padding: 8px 25px;
-    border-radius: 40px;
-    font-weight: bold;
+    border-radius: var(--border-radius-xl);
+    font-weight: 700;
     margin-bottom: 30px;
     font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-gold);
 }
 
 .hero-title {
-    font-size: 56px;
+    font-size: clamp(32px, 6vw, 56px);
     margin-bottom: 20px;
     line-height: 1.2;
+    font-weight: 700;
 }
 
 .hero-description {
-    font-size: 20px;
-    margin-bottom: 30px;
+    font-size: clamp(16px, 3vw, 20px);
+    margin-bottom: 40px;
     opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-/* ==============================================
-   ESTADÍSTICAS
-============================================= */
+/* ----------------------------------------------
+   7. ESTADÍSTICAS
+   ---------------------------------------------- */
 .stats {
     padding: 60px 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4);
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border-top: 2px solid var(--gold);
     border-bottom: 2px solid var(--gold);
 }
@@ -289,73 +410,112 @@ body {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
+    gap: 40px;
     text-align: center;
+}
+
+.stat-item {
+    padding: 20px;
 }
 
 .stat-number {
     font-size: 48px;
     font-weight: 700;
     color: var(--gold);
+    line-height: 1.2;
+    margin-bottom: 10px;
 }
 
 .stat-item p {
     color: white;
     font-size: 18px;
+    font-weight: 500;
 }
 
-/* ==============================================
-   SERVICIOS
-============================================= */
+/* ----------------------------------------------
+   8. SERVICIOS
+   ---------------------------------------------- */
 .servicios {
     padding: 80px 0;
 }
 
 .servicios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
 .servicio-card {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    padding: 40px 20px;
-    border-radius: 20px;
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px 25px;
+    border-radius: var(--border-radius-lg);
     text-align: center;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-slow);
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.servicio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, transparent 100%);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 0;
 }
 
 .servicio-card:hover {
     transform: translateY(-10px);
     border-color: var(--gold);
-    box-shadow: var(--shadow-hover);
+    box-shadow: var(--shadow-lg);
+}
+
+.servicio-card:hover::before {
+    opacity: 0.05;
 }
 
 .servicio-icon {
-    font-size: 48px;
+    font-size: 64px;
     color: var(--brown);
     margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.servicio-card:hover .servicio-icon {
+    transform: scale(1.1);
+    color: var(--brown-dark);
 }
 
 .servicio-card h3 {
     color: var(--brown);
     margin-bottom: 15px;
     font-size: 24px;
+    position: relative;
+    z-index: 1;
 }
 
 .servicio-card p {
     color: var(--gray);
+    position: relative;
+    z-index: 1;
 }
 
-/* ==============================================
-   TRABAJOS
-============================================= */
+/* ----------------------------------------------
+   9. TRABAJOS
+   ---------------------------------------------- */
 .trabajos {
     padding: 80px 0;
-    background: white;
+    background: var(--white);
 }
 
 .trabajos .section-title {
@@ -368,26 +528,26 @@ body {
 
 .trabajos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
 .trabajo-card {
     background: white;
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
     transition: var(--transition);
-    border: 1px solid #eee;
+    border: 1px solid var(--gray-light);
 }
 
 .trabajo-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
+    box-shadow: var(--shadow-lg);
 }
 
 .trabajo-img {
-    height: 220px;
+    height: 250px;
     overflow: hidden;
     position: relative;
 }
@@ -396,7 +556,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .trabajo-card:hover .trabajo-img img {
@@ -410,10 +570,11 @@ body {
     background: var(--gold);
     color: var(--brown);
     padding: 5px 15px;
-    border-radius: 30px;
+    border-radius: var(--border-radius-xl);
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
     z-index: 2;
+    box-shadow: var(--shadow-sm);
 }
 
 .trabajo-content {
@@ -423,15 +584,16 @@ body {
 .trabajo-content h3 {
     color: var(--brown);
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .trabajo-content p {
     color: var(--gray);
 }
 
-/* ==============================================
-   CONTACTO
-============================================= */
+/* ----------------------------------------------
+   10. CONTACTO
+   ---------------------------------------------- */
 .contacto {
     padding: 80px 0;
     color: white;
@@ -452,8 +614,9 @@ body {
 .contacto-card {
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 30px;
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     border: 1px solid rgba(255,215,0,0.3);
     transition: var(--transition);
 }
@@ -461,10 +624,11 @@ body {
 .contacto-card:hover {
     border-color: var(--gold);
     transform: translateX(10px);
+    background: rgba(255,255,255,0.15);
 }
 
 .contacto-card i {
-    font-size: 30px;
+    font-size: 32px;
     color: var(--gold);
     margin-bottom: 15px;
 }
@@ -472,6 +636,7 @@ body {
 .contacto-card h3 {
     color: white;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .contacto-link {
@@ -486,6 +651,7 @@ body {
 
 .contacto-link:hover {
     color: var(--gold);
+    transform: translateX(5px);
 }
 
 .contacto-desc {
@@ -494,23 +660,24 @@ body {
 }
 
 .contacto-mapa {
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
+    height: 100%;
+    min-height: 400px;
 }
 
 .contacto-mapa iframe {
     width: 100%;
     height: 100%;
-    min-height: 400px;
     display: block;
 }
 
-/* ==============================================
-   FOOTER
-============================================= */
+/* ----------------------------------------------
+   11. FOOTER
+   ---------------------------------------------- */
 .footer {
-    background: #0a0a0a;
+    background: var(--black);
     color: white;
     padding: 60px 0 20px;
     border-top: 3px solid var(--gold);
@@ -536,19 +703,27 @@ body {
 }
 
 .google-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: #1e7e34;
     color: white;
-    padding: 5px 20px;
-    border-radius: 30px;
-    font-size: 13px;
+    padding: 8px 20px;
+    border-radius: var(--border-radius-xl);
+    font-size: 14px;
     margin-top: 15px;
+    font-weight: 500;
+}
+
+.google-badge i {
+    font-size: 16px;
 }
 
 .footer-links h4,
 .footer-contact h4 {
     color: var(--gold);
     margin-bottom: 20px;
+    font-size: 18px;
 }
 
 .footer-links ul {
@@ -556,7 +731,7 @@ body {
 }
 
 .footer-links li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .footer-links a {
@@ -567,16 +742,19 @@ body {
 
 .footer-links a:hover {
     color: var(--gold);
+    padding-left: 5px;
 }
 
 .footer-contact p {
-    margin: 10px 0;
+    margin: 12px 0;
     color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .footer-contact i {
     color: var(--gold);
-    margin-right: 10px;
     width: 20px;
 }
 
@@ -596,18 +774,55 @@ body {
 .creator a {
     color: var(--gold);
     text-decoration: none;
+    font-weight: 500;
 }
 
 .creator a:hover {
     text-decoration: underline;
 }
 
-/* ==============================================
-   RESPONSIVE
-============================================= */
+/* ----------------------------------------------
+   12. ANIMACIONES
+   ---------------------------------------------- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.servicio-card,
+.trabajo-card,
+.contacto-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* ----------------------------------------------
+   13. MEDIA QUERIES (RESPONSIVE)
+   ---------------------------------------------- */
 @media (max-width: 992px) {
     .hero-title {
         font-size: 42px;
+    }
+    
+    .contacto-grid {
+        gap: 30px;
     }
 }
 
@@ -624,7 +839,8 @@ body {
         height: calc(100vh - 80px);
         background: rgba(0,0,0,0.95);
         backdrop-filter: blur(10px);
-        transition: var(--transition);
+        -webkit-backdrop-filter: blur(10px);
+        transition: var(--transition-slow);
         z-index: 998;
     }
 
@@ -644,6 +860,10 @@ body {
         font-size: 20px;
     }
 
+    .nav-menu a::after {
+        display: none;
+    }
+
     .hero-title {
         font-size: 36px;
     }
@@ -660,7 +880,6 @@ body {
     .btn {
         width: 100%;
         max-width: 300px;
-        text-align: center;
     }
 
     .contacto-grid {
@@ -670,6 +889,17 @@ body {
     .stats-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    .whatsapp-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
     }
 }
 
@@ -682,11 +912,45 @@ body {
         font-size: 32px;
     }
 
-    .whatsapp-float {
-        width: 60px;
-        height: 60px;
-        font-size: 30px;
-        bottom: 20px;
-        right: 20px;
+    .servicio-card {
+        padding: 30px 20px;
     }
-  }
+
+    .servicio-icon {
+        font-size: 48px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-contact p {
+        justify-content: center;
+    }
+}
+
+/* ----------------------------------------------
+   14. CLASES DE UTILIDAD ADICIONALES
+   ---------------------------------------------- */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mt-4 { margin-top: 40px; }
+.mt-5 { margin-top: 50px; }
+
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.mb-4 { margin-bottom: 40px; }
+.mb-5 { margin-bottom: 50px; }
+
+/* Fin del archivo style.css */
