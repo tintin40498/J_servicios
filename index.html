@@ -18,8 +18,8 @@
     <meta property="og:url" content="https://jservicios.onrender.com">
     <meta property="og:type" content="website">
     
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="images/logo-secundario.png">
+    <!-- FAVICON (se actualizará con el logo secundario) -->
+    <link rel="icon" type="image/png" href="" id="favicon">
     
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -149,7 +149,7 @@
         }
         
         .logo-img {
-            max-width: 100px;
+            max-width: 120px;
             height: auto;
             display: block;
         }
@@ -209,6 +209,11 @@
             background: transparent;
             color: white;
             border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
         }
         
         .menu-toggle {
@@ -388,7 +393,6 @@
             border-radius: 50px;
             font-size: 13px;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
         
         .trabajo-content {
@@ -454,29 +458,28 @@
         </a>
     </div>
 
-    <!-- HEADER CON LOGO VISIBLE -->
+    <!-- HEADER -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
                 
-                <!-- LOGO PRINCIPAL (AHORA SÍ SE VE) -->
+                <!-- LOGO PRINCIPAL (se carga desde JSONBin) -->
                 <div class="logo">
-                    <img src="images/logo-principal.png" 
-                         alt="JServicios" 
-                         class="logo-img">
+                    <img src="" alt="JServicios" class="logo-img" id="logo-principal">
                 </div>
 
-                <!-- MENÚ -->
+                <!-- MENÚ DE NAVEGACIÓN -->
                 <nav class="nav-menu" id="navMenu">
                     <ul>
                         <li><a href="#inicio" class="nav-link">Inicio</a></li>
                         <li><a href="#servicios" class="nav-link">Servicios</a></li>
                         <li><a href="#trabajos" class="nav-link">Trabajos</a></li>
-                        <li id="nav-galeria" style="display:none;"><a href="#galeria">Galería</a></li>
+                        <li id="nav-galeria" style="display:none;"><a href="#galeria" class="nav-link">Galería</a></li>
                         <li><a href="#contacto" class="nav-link">Contacto</a></li>
                     </ul>
                 </nav>
 
+                <!-- ACCIONES -->
                 <div class="header-actions">
                     <a href="#contacto" class="btn btn-primary">Presupuesto</a>
                     <button class="menu-toggle" id="menuToggle">☰</button>
@@ -485,7 +488,7 @@
         </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- MAIN CONTENT -->
     <main>
         <!-- HERO -->
         <section id="inicio" class="hero">
@@ -573,16 +576,17 @@
             </div>
         </section>
 
-        <!-- TRABAJOS -->
+        <!-- TRABAJOS REALIZADOS (dinámico) -->
         <section id="trabajos" class="trabajos">
             <div class="container">
                 <h2 class="section-title">Trabajos realizados</h2>
                 <p class="section-subtitle">Algunos de nuestros proyectos</p>
                 
                 <div class="trabajos-grid" id="trabajos-grid">
+                    <!-- Ejemplos fijos (se mantienen siempre) -->
                     <div class="trabajo-card">
                         <div class="trabajo-img">
-                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa" alt="Construcción" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=500" alt="Construcción" loading="lazy">
                             <span class="trabajo-badge">Construcción</span>
                         </div>
                         <div class="trabajo-content">
@@ -592,7 +596,7 @@
                     </div>
                     <div class="trabajo-card">
                         <div class="trabajo-img">
-                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1" alt="Plomería" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500" alt="Plomería" loading="lazy">
                             <span class="trabajo-badge">Plomería</span>
                         </div>
                         <div class="trabajo-content">
@@ -602,7 +606,7 @@
                     </div>
                     <div class="trabajo-card">
                         <div class="trabajo-img">
-                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e" alt="Electricidad" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500" alt="Electricidad" loading="lazy">
                             <span class="trabajo-badge">Electricidad</span>
                         </div>
                         <div class="trabajo-content">
@@ -614,7 +618,7 @@
             </div>
         </section>
 
-        <!-- GALERÍA -->
+        <!-- GALERÍA (dinámica, oculta hasta que haya imágenes) -->
         <section id="galeria" class="galeria">
             <div class="container">
                 <h2 class="section-title">Galería de obras</h2>
@@ -632,7 +636,7 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
                             <i class="fab fa-whatsapp" style="font-size: 32px; color: var(--secondary);"></i>
-                            <h3 style="margin: 10px 0;">Atención</h3>
+                            <h3 style="margin: 10px 0;">Atención general</h3>
                             <a href="https://wa.me/5491159085736" style="color: white; text-decoration: none; font-weight: 600;">11-5908-5736</a>
                         </div>
                         <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
@@ -657,15 +661,17 @@
                 </div>
             </div>
         </section>
-                                                                                   </main>
-                                                                                       <!-- FOOTER -->
+    </main>
+        <!-- FOOTER -->
     <footer class="footer" style="background: #2C1A0B; color: white; padding: 60px 0 20px;">
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
                 <div>
-                    <img src="images/logo-secundario.png" alt="JServicios" style="width: 70px; margin-bottom: 15px;">
+                    <!-- LOGO SECUNDARIO (se carga desde JSONBin) -->
+                    <img src="" alt="JServicios" style="width: 70px; margin-bottom: 15px;" id="logo-secundario">
                     <h3 style="color: var(--secondary);">JServicios</h3>
                     <p style="color: rgba(255,255,255,0.7);">Construcción · Plomería · Electricidad · Herrero · Pintura · Durlock</p>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 15px;">10 años de experiencia</p>
                 </div>
                 <div>
                     <h4 style="color: var(--secondary); margin-bottom: 20px;">Enlaces</h4>
@@ -673,13 +679,14 @@
                         <li style="margin: 10px 0;"><a href="#inicio" style="color: rgba(255,255,255,0.7); text-decoration: none;">Inicio</a></li>
                         <li style="margin: 10px 0;"><a href="#servicios" style="color: rgba(255,255,255,0.7); text-decoration: none;">Servicios</a></li>
                         <li style="margin: 10px 0;"><a href="#trabajos" style="color: rgba(255,255,255,0.7); text-decoration: none;">Trabajos</a></li>
+                        <li style="margin: 10px 0;"><a href="#galeria" style="color: rgba(255,255,255,0.7); text-decoration: none;">Galería</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 style="color: var(--secondary); margin-bottom: 20px;">Contacto</h4>
-                    <p style="color: rgba(255,255,255,0.7);"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>11-5908-5736</p>
-                    <p style="color: rgba(255,255,255,0.7);"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>11-2686-6846</p>
-                    <p style="color: rgba(255,255,255,0.7);"><i class="fas fa-envelope" style="margin-right: 10px;"></i>jservicios636@gmail.com</p>
+                    <p style="color: rgba(255,255,255,0.7); margin: 10px 0;"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>11-5908-5736</p>
+                    <p style="color: rgba(255,255,255,0.7); margin: 10px 0;"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>11-2686-6846</p>
+                    <p style="color: rgba(255,255,255,0.7); margin: 10px 0;"><i class="fas fa-envelope" style="margin-right: 10px;"></i>jservicios636@gmail.com</p>
                 </div>
             </div>
             <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4);">
@@ -688,12 +695,14 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE CONEXIÓN CON ADMIN -->
+    <!-- SCRIPT PARA CARGAR DATOS DESDE JSONBIN (conecta con el admin) -->
     <script>
+        // Configuración de JSONBin (mismos datos que en admin.html)
         const JB_KEY = '0k56geaVp9BVFrqiyzkWY0hZn9I';
         const JB_BIN = '69a576e43b1c97be9abdd5e';
 
-        async function cargarTrabajos() {
+        // Función para cargar los logos desde JSONBin
+        async function cargarLogos() {
             try {
                 const res = await fetch(`https://api.jsonbin.io/v3/b/${JB_BIN}/latest`, {
                     headers: { 'X-Master-Key': JB_KEY }
@@ -701,13 +710,34 @@
                 if (!res.ok) return;
                 const data = (await res.json()).record;
 
+                // Logo principal
+                const logosPrincipales = data['logo-principal'] || [];
+                if (logosPrincipales.length > 0) {
+                    const ultimo = logosPrincipales[logosPrincipales.length - 1];
+                    document.getElementById('logo-principal').src = ultimo.url;
+                }
+
+                // Logo secundario
+                const logosSecundarios = data['logo-secundario'] || [];
+                if (logosSecundarios.length > 0) {
+                    const ultimo = logosSecundarios[logosSecundarios.length - 1];
+                    document.getElementById('logo-secundario').src = ultimo.url;
+                    
+                    // También actualizar el favicon
+                    const favicon = document.getElementById('favicon');
+                    if (favicon) favicon.href = ultimo.url;
+                }
+
+                // Cargar trabajos
                 const trabajos = data.trabajos || [];
                 const grid = document.getElementById('trabajos-grid');
                 
                 if (trabajos.length > 0 && grid) {
+                    // Eliminar trabajos previos del admin para no duplicar
                     const adminCards = grid.querySelectorAll('.trabajo-card[data-admin]');
                     adminCards.forEach(card => card.remove());
                     
+                    // Agregar los nuevos trabajos al principio
                     trabajos.slice().reverse().forEach(trabajo => {
                         const card = document.createElement('div');
                         card.className = 'trabajo-card';
@@ -725,6 +755,7 @@
                     });
                 }
 
+                // Cargar galería
                 const galeria = data.galeria || [];
                 const seccionGaleria = document.getElementById('galeria');
                 const navGaleria = document.getElementById('nav-galeria');
@@ -745,15 +776,43 @@
                     }
                 }
             } catch (e) {
-                console.log('Error cargando trabajos:', e);
+                console.log('Error cargando datos:', e);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', cargarTrabajos);
+        // Cargar al iniciar
+        document.addEventListener('DOMContentLoaded', cargarLogos);
+
+        // Menú responsive para móvil
         document.getElementById('menuToggle')?.addEventListener('click', function() {
             const navMenu = document.getElementById('navMenu');
-            navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+            if (navMenu.style.display === 'block') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'block';
+            }
+        });
+
+        // Marcar link activo al hacer scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
-</html>
+    </html>
