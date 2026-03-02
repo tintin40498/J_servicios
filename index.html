@@ -18,8 +18,8 @@
     <meta property="og:url" content="https://jservicios.onrender.com">
     <meta property="og:type" content="website">
     
-    <!-- FAVICON (dinámico) -->
-    <link rel="icon" type="image/png" href="" id="favicon">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="images/logo-secundario.png">
     
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- CSS PRINCIPAL -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -55,9 +55,13 @@
         <div class="container">
             <div class="header-content">
                 
-                <!-- LOGO PRINCIPAL (dinámico) -->
+                <!-- LOGO (si no hay imagen, se ve el texto) -->
                 <div class="logo">
-                    <img src="" alt="JServicios" class="logo-img" id="logo-principal">
+                    <img src="images/logo-principal.png" alt="JServicios" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="logo-text" style="display:none;">
+                        <h1>JServicios</h1>
+                        <p>Construcción · Oficios</p>
+                    </div>
                 </div>
 
                 <!-- MENÚ DE NAVEGACIÓN -->
@@ -66,7 +70,7 @@
                         <li><a href="#inicio" class="nav-link">Inicio</a></li>
                         <li><a href="#servicios" class="nav-link">Servicios</a></li>
                         <li><a href="#trabajos" class="nav-link">Trabajos</a></li>
-                        <li id="nav-galeria" style="display:none;"><a href="#galeria" class="nav-link">Galería</a></li>
+                        <li><a href="#galeria" class="nav-link">Galería</a></li>
                         <li><a href="#contacto" class="nav-link">Contacto</a></li>
                     </ul>
                 </nav>
@@ -94,7 +98,7 @@
                         <span class="highlight">con calidad y confianza</span>
                     </h1>
                     <p class="hero-description">
-                        Expertos en construcción, plomería, electricidad, herrería, pintura y durlock.
+                        Expertos en construcción, plomería, electricidad, herrería, pintura y durlock. Trabajamos en toda la zona sur con responsabilidad y los mejores materiales.
                     </p>
                     <div class="hero-buttons">
                         <a href="#servicios" class="btn btn-primary">Nuestros servicios</a>
@@ -103,87 +107,180 @@
                 </div>
             </div>
         </section>
-        <!-- STATS -->
-<section class="stats">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number" data-target="500">0+</div>
-                <p>Proyectos</p>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="10">0</div>
-                <p>Años</p>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="100">0%</div>
-                <p>Satisfacción</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- SERVICIOS -->
-<section id="servicios" class="servicios">
-    <div class="container">
-        <h2 class="section-title">Nuestros servicios</h2>
-        <p class="section-subtitle">Soluciones integrales para tu hogar</p>
-        
-        <div class="servicios-grid">
-            <div class="servicio-card">
-                <div class="servicio-icon">🏗️</div>
-                <h3>Construcción</h3>
-                <p>Obra nueva, ampliaciones, reformas integrales.</p>
+        <!-- STATS CON NÚMEROS FIJOS -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <p>Proyectos completados</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <p>Años de experiencia</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <p>Clientes satisfechos</p>
+                    </div>
+                </div>
             </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">🔧</div>
-                <h3>Plomería</h3>
-                <p>Instalaciones, reparaciones, pérdidas de agua.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">⚡</div>
-                <h3>Electricidad</h3>
-                <p>Instalaciones, tableros, reparaciones.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">🔨</div>
-                <h3>Herrería</h3>
-                <p>Puertas, rejas, portones, barandas.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">🎨</div>
-                <h3>Pintura y Durlock</h3>
-                <p>Pintura interior/exterior y durlock.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">🧱</div>
-                <h3>Albañilería</h3>
-                <p>Revoques, contrapisos, cerámicos.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">🛠️</div>
-                <h3>Reparaciones</h3>
-                <p>Todo tipo de arreglos en el hogar.</p>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- TRABAJOS REALIZADOS (100% DINÁMICOS - SIN EJEMPLOS FIJOS) -->
-<section id="trabajos" class="trabajos">
-    <div class="container">
-        <h2 class="section-title">Trabajos realizados</h2>
-        <p class="section-subtitle">Algunos de nuestros proyectos</p>
-        
-        <!-- Grid completamente vacío - se llena desde el admin -->
-        <div class="trabajos-grid" id="trabajos-grid"></div>
-    </div>
-</section>
-        <!-- GALERÍA (100% DINÁMICA) -->
+        <!-- SERVICIOS -->
+        <section id="servicios" class="servicios">
+            <div class="container">
+                <h2 class="section-title">Nuestros servicios</h2>
+                <p class="section-subtitle">Soluciones integrales para tu hogar o comercio</p>
+                
+                <div class="servicios-grid">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🏗️</div>
+                        <h3>Construcción</h3>
+                        <p>Obra nueva, ampliaciones, reformas integrales. Desde los cimientos hasta el techo.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🔧</div>
+                        <h3>Plomería</h3>
+                        <p>Instalaciones, reparaciones, desagües, calefones, pérdidas de agua, tanques.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">⚡</div>
+                        <h3>Electricidad</h3>
+                        <p>Instalaciones eléctricas, tableros, reparaciones, iluminación, térmicas.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🔨</div>
+                        <h3>Herrería</h3>
+                        <p>Puertas, rejas, portones, barandas, estructuras metálicas, reparaciones en general.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🎨</div>
+                        <h3>Pintura y Durlock</h3>
+                        <p>Pintura interior y exterior. Látex, esmalte, impermeabilizantes. Colocación y reparación de durlock.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🧱</div>
+                        <h3>Albañilería</h3>
+                        <p>Revoques, contrapisos, colocación de cerámicos, tabiques, paredes.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🛠️</div>
+                        <h3>Reparaciones generales</h3>
+                        <p>Todo tipo de arreglos en el hogar o comercio. Consultanos sin compromiso.</p>
+                    </div>
+                </div>
+            </div>
+                        </section>
+                                <!-- TRABAJOS REALIZADOS - CON EJEMPLOS PROLIJOS -->
+        <section id="trabajos" class="trabajos">
+            <div class="container">
+                <h2 class="section-title">Trabajos realizados</h2>
+                <p class="section-subtitle">Algunos de nuestros proyectos</p>
+                
+                <div class="trabajos-grid">
+                    <!-- Ejemplo 1 - Construcción -->
+                    <div class="trabajo-card">
+                        <div class="trabajo-img">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ampliación de vivienda" loading="lazy">
+                            <span class="trabajo-badge">Construcción</span>
+                        </div>
+                        <div class="trabajo-content">
+                            <h3>Ampliación de vivienda</h3>
+                            <p>Construcción de 2 habitaciones y baño completo en González Catán. Obra llave en mano con materiales de primera calidad.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ejemplo 2 - Plomería -->
+                    <div class="trabajo-card">
+                        <div class="trabajo-img">
+                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Renovación de baño" loading="lazy">
+                            <span class="trabajo-badge">Plomería</span>
+                        </div>
+                        <div class="trabajo-content">
+                            <h3>Renovación de baño</h3>
+                            <p>Cambio completo de cañerías, colocación de sanitarios y grifería en Guernica. Solución definitiva a pérdidas de agua.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ejemplo 3 - Electricidad -->
+                    <div class="trabajo-card">
+                        <div class="trabajo-img">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Instalación eléctrica" loading="lazy">
+                            <span class="trabajo-badge">Electricidad</span>
+                        </div>
+                        <div class="trabajo-content">
+                            <h3>Instalación eléctrica</h3>
+                            <p>Tablero general, distribución y certificación en comercio de San Vicente. Instalación completa con materiales certificados.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ejemplo 4 - Herrería -->
+                    <div class="trabajo-card">
+                        <div class="trabajo-img">
+                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Portón automático" loading="lazy">
+                            <span class="trabajo-badge">Herrería</span>
+                        </div>
+                        <div class="trabajo-content">
+                            <h3>Portón automático</h3>
+                            <p>Fabricación e instalación de portón corredizo con automatización en hogar de Presidente Derqui. Diseño a medida.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ejemplo 5 - Pintura -->
+                    <div class="trabajo-card">
+                        <div class="trabajo-img">
+                            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pintura exterior" loading="lazy">
+                            <span class="trabajo-badge">Pintura</span>
+                        </div>
+                        <div class="trabajo-content">
+                            <h3>Pintura exterior</h3>
+                            <p>Pintura completa de fachada con impermeabilizante y látex premium en vivienda de Guernica. Incluye preparación de superficies.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ejemplo 6 - Albañilería -->
+                    <div class="trabajo-card">
+                        <div class="trabajo-img">
+                            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Colocación de cerámicos" loading="lazy">
+                            <span class="trabajo-badge">Albañilería</span>
+                        </div>
+                        <div class="trabajo-content">
+                            <h3>Colocación de cerámicos</h3>
+                            <p>Colocación de porcelanato en 80m² de living y cocina en departamento de San Vicente. Terminación perfecta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERÍA - CON EJEMPLOS PROLIJOS -->
         <section id="galeria" class="galeria">
             <div class="container">
                 <h2 class="section-title">Galería de obras</h2>
-                <div class="galeria-grid" id="galeria-grid"></div>
+                <p class="section-subtitle">Más de nuestros trabajos</p>
+                
+                <div class="galeria-grid">
+                    <div class="galeria-item">
+                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Obra construcción" loading="lazy">
+                    </div>
+                    <div class="galeria-item">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Trabajo plomería" loading="lazy">
+                    </div>
+                    <div class="galeria-item">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Instalación eléctrica" loading="lazy">
+                    </div>
+                    <div class="galeria-item">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Trabajo herrería" loading="lazy">
+                    </div>
+                    <div class="galeria-item">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Pintura" loading="lazy">
+                    </div>
+                    <div class="galeria-item">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Albañilería" loading="lazy">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -206,7 +303,7 @@
                             <i class="fab fa-whatsapp"></i>
                             <h3>Presupuestos</h3>
                             <a href="https://wa.me/5491126866846" class="contacto-link" target="_blank">11-2686-6846</a>
-                            <p class="contacto-desc">Obras grandes · Presupuestos</p>
+                            <p class="contacto-desc">Obras grandes · Presupuestos sin cargo</p>
                         </div>
                         
                         <div class="contacto-card">
@@ -219,14 +316,18 @@
                         <div class="contacto-card">
                             <i class="fas fa-map-marker-alt"></i>
                             <h3>Ubicación</h3>
-                            <p class="contacto-link">Guernica, Buenos Aires</p>
-                            <p class="contacto-desc">Atendemos en toda la zona</p>
+                            <p class="contacto-link">Av. Atahualpa Yupanqui 2698</p>
+                            <p class="contacto-desc">Guernica, Buenos Aires · Atendemos en toda la zona</p>
                         </div>
                     </div>
                     
                     <div class="contacto-mapa">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26240!2d-58.383759!3d-34.603739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf0f8c7f6d%3A0x2b1d5e8c0b8b9c0f!2sGuernica%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height: 400px;" 
+                            allowfullscreen="" 
                             loading="lazy"
                             title="Ubicación de JServicios en Guernica">
                         </iframe>
@@ -241,11 +342,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <!-- Logo secundario dinámico -->
-                    <img src="" alt="JServicios" class="footer-logo-img" id="logo-secundario">
+                    <img src="images/logo-secundario.png" alt="JServicios" style="width: 70px; margin-bottom: 15px;" onerror="this.style.display='none';">
                     <h3>JServicios</h3>
                     <p>Construcción · Plomería · Electricidad · Herrero · Pintura · Durlock</p>
-                    <p class="footer-matricula">10 años de experiencia</p>
+                    <p class="footer-matricula">10 años de experiencia · Matrícula 123456</p>
                     <div class="google-badge">
                         <i class="fas fa-check-circle"></i> Verificado por Google
                     </div>
@@ -283,90 +383,26 @@
     <!-- SCRIPTS -->
     <script src="main.js"></script>
     
-    <!-- SCRIPT DE CARGA DE DATOS DESDE JSONBIN (CONECTA CON EL ADMIN) -->
+    <!-- SCRIPT PARA MENÚ RESPONSIVE (FALLBACK) -->
     <script>
-        // Configuración de JSONBin
-        const JB_KEY = '0k56geaVp9BVFrqiyzkWY0hZn9I';
-        const JB_BIN = '69a576e43b1c97be9abdd5e';
-
-        async function cargarDatos() {
-            try {
-                const res = await fetch(`https://api.jsonbin.io/v3/b/${JB_BIN}/latest`, {
-                    headers: { 'X-Master-Key': JB_KEY }
-                });
-                if (!res.ok) return;
-                const data = (await res.json()).record;
-
-                // ==========================================
-                // 1. CARGAR LOGOS
-                // ==========================================
-                const logosPrincipales = data['logo-principal'] || [];
-                if (logosPrincipales.length > 0) {
-                    const ultimo = logosPrincipales[logosPrincipales.length - 1];
-                    document.getElementById('logo-principal').src = ultimo.url;
-                }
-
-                const logosSecundarios = data['logo-secundario'] || [];
-                if (logosSecundarios.length > 0) {
-                    const ultimo = logosSecundarios[logosSecundarios.length - 1];
-                    document.getElementById('logo-secundario').src = ultimo.url;
-                    document.getElementById('favicon').href = ultimo.url;
-                }
-
-                // ==========================================
-                // 2. CARGAR TRABAJOS (SIN EJEMPLOS FIJOS)
-                // ==========================================
-                const trabajos = data.trabajos || [];
-                const gridTrabajos = document.getElementById('trabajos-grid');
-                
-                if (trabajos.length > 0 && gridTrabajos) {
-                    gridTrabajos.innerHTML = ''; // Limpiar completamente
-                    
-                    trabajos.slice().reverse().forEach(trabajo => {
-                        const card = document.createElement('div');
-                        card.className = 'trabajo-card';
-                        card.innerHTML = `
-                            <div class="trabajo-img">
-                                <img src="${trabajo.url}" alt="${trabajo.titulo || 'Trabajo'}" loading="lazy"/>
-                                ${trabajo.tipo ? `<span class="trabajo-badge">${trabajo.tipo}</span>` : ''}
-                            </div>
-                            <div class="trabajo-content">
-                                <h3>${trabajo.titulo || 'Trabajo realizado'}</h3>
-                                ${trabajo.descripcion ? `<p>${trabajo.descripcion}</p>` : ''}
-                            </div>`;
-                        gridTrabajos.appendChild(card);
-                    });
-                }
-
-                // ==========================================
-                // 3. CARGAR GALERÍA
-                // ==========================================
-                const galeria = data.galeria || [];
-                const seccionGaleria = document.getElementById('galeria');
-                const navGaleria = document.getElementById('nav-galeria');
-                const gridGaleria = document.getElementById('galeria-grid');
-
-                if (galeria.length > 0) {
-                    if (seccionGaleria) seccionGaleria.style.display = 'block';
-                    if (navGaleria) navGaleria.style.display = 'list-item';
-
-                    if (gridGaleria) {
-                        gridGaleria.innerHTML = '';
-                        galeria.slice().reverse().forEach(img => {
-                            const item = document.createElement('div');
-                            item.className = 'galeria-item';
-                            item.innerHTML = `<img src="${img.url}" alt="${img.titulo || 'Galería'}" loading="lazy">`;
-                            gridGaleria.appendChild(item);
-                        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
                     }
-                }
-            } catch (e) {
-                console.log('Error cargando datos:', e);
+                });
             }
-        }
-
-        // Cargar al iniciar
-        document.addEventListener('DOMContentLoaded', cargarDatos);
+        });
     </script>
 </body>
-</html>
+    </html>
