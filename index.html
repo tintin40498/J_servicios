@@ -7,75 +7,749 @@
     
     <!-- META TAGS PROFESIONALES -->
     <meta name="description" content="JServicios: construcción, plomería, electricidad, herrería, pintura y durlock en Guernica, Buenos Aires. Más de 10 años de experiencia. Presupuesto sin cargo.">
-    <meta name="keywords" content="construcción, plomero, electricista, herrero, pintura, durlock, albañilería, reparaciones, Guernica, Buenos Aires">
+    <meta name="keywords" content="construcción Guernica, plomero, electricista, herrero, pintura, durlock, albañilería, reparaciones, reformas integrales">
     <meta name="author" content="JServicios">
     <meta name="robots" content="index, follow">
     
     <!-- OPEN GRAPH / REDES SOCIALES -->
-    <meta property="og:title" content="JServicios · Construcción y Oficios">
+    <meta property="og:title" content="JServicios · Construcción y Oficios Profesionales">
     <meta property="og:description" content="Más de 10 años construyendo sueños. Trabajos garantizados en toda la zona sur.">
-    <meta property="og:image" content="https://jservicios.onrender.com/images/og-image.jpg">
+    <meta property="og:image" content="https://jservicios.onrender.com/images/logo-principal.png">
     <meta property="og:url" content="https://jservicios.onrender.com">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
     
-    <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <!-- FAVICON - LOGO SECUNDARIO -->
+    <link rel="icon" type="image/png" href="images/logo-secundario.png">
     
-    <!-- CSS PRINCIPAL -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- FONT AWESOME (ICONOS) -->
+    <!-- FONT AWESOME 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0a2c3d;
+            --primary-light: #1e4a6a;
+            --secondary: #c9a959;
+            --accent: #e67e22;
+            --bg-light: #f5f7fa;
+            --bg-white: #ffffff;
+            --text-dark: #1a2b3c;
+            --text-light: #5c6b7e;
+            --text-muted: #8a9aa8;
+            --border: #e2e8f0;
+            --shadow: 0 10px 30px -5px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px -8px rgba(0,0,0,0.15);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        /* WHATSAPP FLOTANTE */
+        .whatsapp-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .whatsapp-float {
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-float-secondary {
+            background: #128C7E;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 80px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            right: 85px;
+        }
+        
+        /* HEADER */
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 85px;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: #b8943a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(201, 169, 89, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e4a6a 100%);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-title .highlight {
+            color: var(--secondary);
+            display: block;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* STATS */
+        .stats {
+            background: var(--bg-white);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* SERVICIOS */
+        .servicios {
+            background: var(--bg-light);
+        }
+        
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .servicio-card {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+        
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--secondary);
+        }
+        
+        .servicio-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+        }
+        
+        .servicio-card h3 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .servicio-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* TRABAJOS */
+        .trabajos {
+            background: var(--bg-white);
+        }
+        
+        .trabajos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .trabajo-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+        
+        .trabajo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .trabajo-img {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trabajo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .trabajo-card:hover .trabajo-img img {
+            transform: scale(1.1);
+        }
+        
+        .trabajo-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .trabajo-content {
+            padding: 25px;
+        }
+        
+        .trabajo-content h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .trabajo-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* GALERÍA */
+        #galeria {
+            background: var(--bg-light);
+            display: none;
+        }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .galeria-item {
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            box-shadow: var(--shadow);
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* CONTACTO */
+        .contacto {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .contacto .section-title {
+            color: white;
+        }
+        
+        .contacto .section-title::after {
+            background: var(--secondary);
+        }
+        
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contacto-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .contacto-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .contacto-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .contacto-card i {
+            font-size: 32px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .contacto-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .contacto-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .contacto-desc {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        .contacto-mapa {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 450px;
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .contacto-mapa iframe {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: #0a1a2a;
+            color: white;
+            padding: 80px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 28px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+        
+        .footer-matricula {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 15px;
+        }
+        
+        .google-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e7e34;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin: 12px 0;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-contact p {
+            margin: 15px 0;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-contact i {
+            color: var(--secondary);
+            width: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.4);
+            font-size: 14px;
+        }
+        
+        .footer-bottom .creator {
+            margin-top: 15px;
+        }
+        
+        .footer-bottom a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contacto-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contacto-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .logo-img {
+                width: 70px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- ============================================ -->
-    <!-- WHATSAPP FLOTANTE (DOS CONTACTOS)           -->
-    <!-- ============================================ -->
+    <body>
+    <!-- WHATSAPP FLOTANTE -->
     <div class="whatsapp-container">
         <a href="https://wa.me/5491159085736?text=Hola%21%20Me%20comunico%20desde%20la%20web%20de%20JServicios" 
            class="whatsapp-float" 
            target="_blank"
            aria-label="Contactar por WhatsApp">
             <i class="fab fa-whatsapp"></i>
-            <span class="whatsapp-tooltip">Contacto 1</span>
+            <span class="whatsapp-tooltip">Atención general</span>
         </a>
-        <a href="https://wa.me/5491126866846?text=Hola%21%20Me%20comunico%20desde%20la%20web%20de%20JServicios" 
+        <a href="https://wa.me/5491126866846?text=Hola%21%20Me%20comunico%20desde%20la%20web%20de%20JServicios%20para%20presupuestos" 
            class="whatsapp-float whatsapp-float-secondary" 
            target="_blank"
-           aria-label="Contactar por WhatsApp secundario">
+           aria-label="Contactar por WhatsApp para presupuestos">
             <i class="fab fa-whatsapp"></i>
-            <span class="whatsapp-tooltip">Contacto 2</span>
+            <span class="whatsapp-tooltip">Presupuestos</span>
         </a>
     </div>
 
-    <!-- ============================================ -->
-    <!-- HEADER / NAVBAR                              -->
-    <!-- ============================================ -->
+    <!-- HEADER CON LOGO LOCAL -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
                 
-                <!-- LOGO -->
+                <!-- LOGO PRINCIPAL (local) -->
                 <div class="logo">
-                    <a href="index.html" aria-label="Ir al inicio">
-                        <h1>JServicios</h1>
-                    </a>
-                    <p class="logo-sub">Construcción · Plomería · Electricidad · Herrero · Pintura</p>
+                    <img src="images/logo-principal.png" 
+                         alt="JServicios Logo" 
+                         class="logo-img">
                 </div>
 
                 <!-- MENÚ DE NAVEGACIÓN -->
                 <nav class="nav-menu" id="navMenu">
                     <ul>
-                        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                        <li><a href="#inicio" class="nav-link">Inicio</a></li>
                         <li><a href="#servicios" class="nav-link">Servicios</a></li>
                         <li><a href="#trabajos" class="nav-link">Trabajos</a></li>
+                        <li id="nav-galeria" style="display:none;"><a href="#galeria" class="nav-link">Galería</a></li>
                         <li><a href="#contacto" class="nav-link">Contacto</a></li>
                     </ul>
                 </nav>
@@ -91,47 +765,51 @@
         </div>
     </header>
 
-    <!-- ============================================ -->
-    <!-- MAIN / CONTENIDO PRINCIPAL                   -->
-    <!-- ============================================ -->
+    <!-- MAIN CONTENT -->
     <main>
 
-        <!-- HERO SECTION -->
+        <!-- HERO -->
         <section id="inicio" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <span class="hero-badge">⚡ 10 años de experiencia</span>
+                    <span class="hero-badge">
+                        <i class="fas fa-star"></i> 10 AÑOS DE EXPERIENCIA
+                    </span>
                     <h1 class="hero-title">
-                        Construimos tus sueños <br>
+                        Construimos tus sueños 
                         <span class="highlight">con calidad y confianza</span>
                     </h1>
                     <p class="hero-description">
-                        Especialistas en construcción, plomería, electricidad, herrería, pintura y durlock. 
+                        Expertos en construcción, plomería, electricidad, herrería, pintura y durlock. 
                         Trabajamos en toda la zona sur con responsabilidad y los mejores materiales.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#servicios" class="btn btn-primary">Ver servicios</a>
-                        <a href="#contacto" class="btn btn-outline">Contactar</a>
+                        <a href="#servicios" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Nuestros servicios
+                        </a>
+                        <a href="#contacto" class="btn btn-outline">
+                            <i class="fas fa-whatsapp"></i> Contactar
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ESTADÍSTICAS -->
+        <!-- STATS -->
         <section class="stats">
             <div class="container">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="stat-number" data-target="500">0</div>
-                        <p>Proyectos completados</p>
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Proyectos completados</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-target="10">0</div>
-                        <p>Años de experiencia</p>
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Años de experiencia</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-target="100">0</div>
-                        <p>Clientes satisfechos</p>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Clientes satisfechos</div>
                     </div>
                 </div>
             </div>
@@ -140,10 +818,8 @@
         <!-- SERVICIOS -->
         <section id="servicios" class="servicios">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Nuestros servicios</h2>
-                    <p class="section-subtitle">Soluciones integrales para tu hogar o comercio</p>
-                </div>
+                <h2 class="section-title">Nuestros servicios</h2>
+                <p class="section-subtitle">Soluciones integrales para tu hogar o comercio</p>
                 
                 <div class="servicios-grid">
                     <div class="servicio-card">
@@ -153,7 +829,7 @@
                     </div>
                     <div class="servicio-card">
                         <div class="servicio-icon">🔧</div>
-                        <h3>Plomero</h3>
+                        <h3>Plomería</h3>
                         <p>Instalaciones, reparaciones, desagües, calefones, pérdidas de agua, tanques.</p>
                     </div>
                     <div class="servicio-card">
@@ -163,13 +839,13 @@
                     </div>
                     <div class="servicio-card">
                         <div class="servicio-icon">🔨</div>
-                        <h3>Herrero</h3>
+                        <h3>Herrería</h3>
                         <p>Puertas, rejas, portones, barandas, estructuras metálicas, reparaciones en general.</p>
                     </div>
                     <div class="servicio-card">
                         <div class="servicio-icon">🎨</div>
                         <h3>Pintura y Durlock</h3>
-                        <p>Pintura interior y exterior. Látex, esmalte, impermeabilizantes. Colocación y reparación de durlock.</p>
+                        <p>Pintura interior y exterior. Colocación y reparación de durlock.</p>
                     </div>
                     <div class="servicio-card">
                         <div class="servicio-icon">🧱</div>
@@ -178,78 +854,84 @@
                     </div>
                     <div class="servicio-card">
                         <div class="servicio-icon">🛠️</div>
-                        <h3>Reparaciones generales</h3>
+                        <h3>Reparaciones</h3>
                         <p>Todo tipo de arreglos en el hogar o comercio. Consultanos sin compromiso.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TRABAJOS REALIZADOS -->
+        <!-- TRABAJOS (DINÁMICO) -->
         <section id="trabajos" class="trabajos">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Trabajos realizados</h2>
-                    <p class="section-subtitle">Algunos de nuestros proyectos</p>
-                </div>
+                <h2 class="section-title">Trabajos realizados</h2>
+                <p class="section-subtitle">Algunos de nuestros proyectos</p>
                 
-                <div class="trabajos-grid">
-                    <article class="trabajo-card">
+                <div class="trabajos-grid" id="trabajos-grid">
+                    <!-- Ejemplos fijos -->
+                    <div class="trabajo-card">
                         <div class="trabajo-img">
-                            <img src="images/trabajo-1.jpg" alt="Ampliación de vivienda" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Construcción" loading="lazy">
                             <span class="trabajo-badge">Construcción</span>
                         </div>
                         <div class="trabajo-content">
                             <h3>Ampliación de vivienda</h3>
                             <p>Construcción de 2 habitaciones y baño completo en González Catán.</p>
                         </div>
-                    </article>
-                    <article class="trabajo-card">
+                    </div>
+                    <div class="trabajo-card">
                         <div class="trabajo-img">
-                            <img src="images/trabajo-2.jpg" alt="Renovación de baño" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Plomería" loading="lazy">
                             <span class="trabajo-badge">Plomería</span>
                         </div>
                         <div class="trabajo-content">
                             <h3>Renovación de baño</h3>
                             <p>Cambio de cañerías y colocación de sanitarios en Guernica.</p>
                         </div>
-                    </article>
-                    <article class="trabajo-card">
+                    </div>
+                    <div class="trabajo-card">
                         <div class="trabajo-img">
-                            <img src="images/trabajo-3.jpg" alt="Instalación eléctrica" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Electricidad" loading="lazy">
                             <span class="trabajo-badge">Electricidad</span>
                         </div>
                         <div class="trabajo-content">
                             <h3>Instalación eléctrica</h3>
                             <p>Tablero general y distribución en comercio de San Vicente.</p>
                         </div>
-                    </article>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- GALERÍA DINÁMICA -->
+        <section id="galeria" class="galeria">
+            <div class="container">
+                <h2 class="section-title">Galería de obras</h2>
+                <p class="section-subtitle">Más de nuestros trabajos</p>
+                <div class="galeria-grid" id="galeria-grid"></div>
             </div>
         </section>
 
         <!-- CONTACTO -->
         <section id="contacto" class="contacto">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Contacto</h2>
-                    <p class="section-subtitle">Respondemos a la brevedad</p>
-                </div>
+                <h2 class="section-title">Contacto</h2>
+                <p class="section-subtitle">Respondemos a la brevedad</p>
                 
                 <div class="contacto-grid">
                     <div class="contacto-info">
                         <div class="contacto-card">
                             <i class="fab fa-whatsapp"></i>
-                            <h3>Contacto 1</h3>
+                            <h3>Atención general</h3>
                             <a href="https://wa.me/5491159085736" class="contacto-link" target="_blank">11-5908-5736</a>
-                            <p class="contacto-desc">Atención general · Respuesta rápida</p>
+                            <p class="contacto-desc">Respuesta rápida · Consultas generales</p>
                         </div>
                         
                         <div class="contacto-card">
                             <i class="fab fa-whatsapp"></i>
-                            <h3>Contacto 2</h3>
+                            <h3>Presupuestos</h3>
                             <a href="https://wa.me/5491126866846" class="contacto-link" target="_blank">11-2686-6846</a>
-                            <p class="contacto-desc">Presupuestos · Obras grandes</p>
+                            <p class="contacto-desc">Obras grandes · Presupuestos</p>
                         </div>
                         
                         <div class="contacto-card">
@@ -261,19 +943,15 @@
                         
                         <div class="contacto-card">
                             <i class="fas fa-map-marker-alt"></i>
-                            <h3>Oficina</h3>
-                            <p class="contacto-link">Av. Atahualpa Yupanqui 2698-2600</p>
-                            <p class="contacto-desc">B1862CYB · Guernica, Pcia. Buenos Aires</p>
+                            <h3>Ubicación</h3>
+                            <p class="contacto-link">Av. Atahualpa Yupanqui 2698</p>
+                            <p class="contacto-desc">Guernica, Buenos Aires</p>
                         </div>
                     </div>
                     
                     <div class="contacto-mapa">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26240.123456789!2d-58.383759!3d-34.603739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf0f8c7f6d%3A0x2b1d5e8c0b8b9c0f!2sGuernica%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0; min-height: 400px;" 
-                            allowfullscreen="" 
                             loading="lazy"
                             title="Ubicación de JServicios en Guernica">
                         </iframe>
@@ -282,14 +960,15 @@
             </div>
         </section>
     </main>
-
-    <!-- ============================================ -->
-    <!-- FOOTER                                        -->
-    <!-- ============================================ -->
+        <!-- FOOTER CON LOGO SECUNDARIO OPCIONAL -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
+                    <!-- Logo secundario en footer (opcional) -->
+                    <img src="images/logo-secundario.png" 
+                         alt="JServicios" 
+                         style="width:70px; margin-bottom:15px;">
                     <h3>JServicios</h3>
                     <p>Construcción · Plomería · Electricidad · Herrero · Pintura · Durlock</p>
                     <p class="footer-matricula">Matrícula: 123456 · 10 años de experiencia</p>
@@ -320,16 +999,86 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 JServicios · Todos los derechos reservados</p>
                 <p class="creator">
-                    Desarrollo web por <a href="mailto:jservicios636@gmail.com">JServicios636</a> · 
-                    Creación de páginas profesionales
+                    Desarrollo web profesional · <a href="mailto:jservicios636@gmail.com">Contactar</a>
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- ============================================ -->
-    <!-- SCRIPTS                                       -->
-    <!-- ============================================ -->
-    <script src="js/main.js"></script>
+    <!-- SCRIPT DE CONEXIÓN CON ADMIN -->
+    <script>
+        const JB_KEY = '0k56geaVp9BVFrqiyzkWY0hZn9I';
+        const JB_BIN = '69a576e43b1c97be9abdd5e';
+
+        async function cargarTrabajos() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${JB_BIN}/latest`, {
+                    headers: { 'X-Master-Key': JB_KEY }
+                });
+                if (!res.ok) return;
+                const data = (await res.json()).record;
+
+                const trabajos = data.trabajos || [];
+                const grid = document.getElementById('trabajos-grid');
+                
+                if (trabajos.length > 0 && grid) {
+                    const adminCards = grid.querySelectorAll('.trabajo-card[data-admin]');
+                    adminCards.forEach(card => card.remove());
+                    
+                    trabajos.slice().reverse().forEach(trabajo => {
+                        const card = document.createElement('div');
+                        card.className = 'trabajo-card';
+                        card.setAttribute('data-admin', 'true');
+                        card.innerHTML = `
+                            <div class="trabajo-img">
+                                <img src="${trabajo.url}" alt="${trabajo.titulo || 'Trabajo'}" loading="lazy"/>
+                                ${trabajo.tipo ? `<span class="trabajo-badge">${trabajo.tipo}</span>` : ''}
+                            </div>
+                            <div class="trabajo-content">
+                                <h3>${trabajo.titulo || 'Trabajo realizado'}</h3>
+                                ${trabajo.descripcion ? `<p>${trabajo.descripcion}</p>` : ''}
+                            </div>`;
+                        grid.insertBefore(card, grid.firstChild);
+                    });
+                }
+
+                const galeria = data.galeria || [];
+                const seccionGaleria = document.getElementById('galeria');
+                const navGaleria = document.getElementById('nav-galeria');
+                const gGrid = document.getElementById('galeria-grid');
+
+                if (galeria.length > 0) {
+                    if (seccionGaleria) seccionGaleria.style.display = 'block';
+                    if (navGaleria) navGaleria.style.display = 'list-item';
+
+                    if (gGrid) {
+                        gGrid.innerHTML = '';
+                        galeria.slice().reverse().forEach(img => {
+                            const item = document.createElement('div');
+                            item.className = 'galeria-item';
+                            item.innerHTML = `<img src="${img.url}" alt="${img.titulo || 'Galería'}" loading="lazy">`;
+                            gGrid.appendChild(item);
+                        });
+                    }
+                }
+            } catch (e) {
+                console.log('Error cargando trabajos:', e);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', cargarTrabajos);
+
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
-    </html>
+</html>
