@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://jservicios.onrender.com">
     <meta property="og:type" content="website">
     
-    <!-- FAVICON (se actualizará con el logo secundario) -->
+    <!-- FAVICON (dinámico) -->
     <link rel="icon" type="image/png" href="" id="favicon">
     
     <!-- FONT AWESOME -->
@@ -29,432 +29,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #5D3A1A;        /* Marrón oscuro principal */
-            --primary-light: #8B5A2B;   /* Marrón más claro */
-            --secondary: #B68B40;       /* Marrón dorado */
-            --accent: #C17B3A;          /* Naranja marrón */
-            --bg-light: #F5F0E6;        /* Fondo crema */
-            --bg-white: #FFFFFF;
-            --text-dark: #3E2C1B;
-            --text-light: #6B4F32;
-            --text-muted: #9B7B5C;
-            --border: #D4C5B2;
-            --shadow: 0 10px 30px -5px rgba(93, 58, 26, 0.1);
-            --shadow-hover: 0 20px 40px -8px rgba(93, 58, 26, 0.15);
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 20px auto 0;
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-        
-        /* WHATSAPP FLOTANTE */
-        .whatsapp-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .whatsapp-float {
-            width: 65px;
-            height: 65px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-        
-        .whatsapp-float-secondary {
-            background: #128C7E;
-        }
-        
-        /* HEADER */
-        .header {
-            background: var(--primary);
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-img {
-            max-width: 120px;
-            height: auto;
-            display: block;
-        }
-        
-        .nav-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s;
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--primary);
-        }
-        
-        .btn-primary:hover {
-            background: #9f7a35;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        
-        .btn-outline:hover {
-            border-color: var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-        }
-        
-        /* HERO */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #8B5A2B 100%);
-            color: white;
-            padding: 120px 0;
-            position: relative;
-        }
-        
-        .hero-content {
-            max-width: 700px;
-        }
-        
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-        
-        .hero-title {
-            font-size: 56px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-        
-        .hero-title .highlight {
-            color: var(--secondary);
-            display: block;
-        }
-        
-        .hero-description {
-            font-size: 18px;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 35px;
-            max-width: 600px;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-        }
-        
-        /* STATS */
-        .stats {
-            background: var(--bg-white);
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 56px;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-        
-        .stat-label {
-            font-size: 18px;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-        
-        /* SERVICIOS */
-        .servicios {
-            background: var(--bg-light);
-        }
-        
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        
-        .servicio-card {
-            background: var(--bg-white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-        
-        .servicio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--secondary);
-        }
-        
-        .servicio-icon {
-            font-size: 56px;
-            margin-bottom: 25px;
-        }
-        
-        .servicio-card h3 {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .servicio-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        /* TRABAJOS */
-        .trabajos {
-            background: var(--bg-white);
-        }
-        
-        .trabajos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .trabajo-card {
-            background: var(--bg-white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-        
-        .trabajo-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .trabajo-img {
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .trabajo-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .trabajo-card:hover .trabajo-img img {
-            transform: scale(1.1);
-        }
-        
-        .trabajo-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-        
-        .trabajo-content {
-            padding: 25px;
-        }
-        
-        .trabajo-content h3 {
-            font-size: 22px;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .trabajo-content p {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        /* GALERÍA */
-        #galeria {
-            background: var(--bg-light);
-            display: none;
-        }
-        
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .galeria-item {
-            border-radius: 15px;
-            overflow: hidden;
-            aspect-ratio: 1/1;
-            box-shadow: var(--shadow);
-        }
-        
-        .galeria-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .galeria-item:hover img {
-            transform: scale(1.1);
-        }
-    </style>
+    <!-- CSS PRINCIPAL -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <body>
+
     <!-- WHATSAPP FLOTANTE -->
     <div class="whatsapp-container">
         <a href="https://wa.me/5491159085736?text=Hola%21%20Me%20comunico%20desde%20la%20web%20de%20JServicios" 
            class="whatsapp-float" 
            target="_blank">
             <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">Atención general</span>
         </a>
         <a href="https://wa.me/5491126866846?text=Hola%21%20Me%20comunico%20desde%20la%20web%20de%20JServicios%20para%20presupuestos" 
            class="whatsapp-float whatsapp-float-secondary" 
            target="_blank">
             <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">Presupuestos</span>
         </a>
     </div>
 
@@ -463,7 +55,7 @@
         <div class="container">
             <div class="header-content">
                 
-                <!-- LOGO PRINCIPAL (se carga desde JSONBin) -->
+                <!-- LOGO PRINCIPAL (dinámico) -->
                 <div class="logo">
                     <img src="" alt="JServicios" class="logo-img" id="logo-principal">
                 </div>
@@ -482,7 +74,9 @@
                 <!-- ACCIONES -->
                 <div class="header-actions">
                     <a href="#contacto" class="btn btn-primary">Presupuesto</a>
-                    <button class="menu-toggle" id="menuToggle">☰</button>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -509,116 +103,83 @@
                 </div>
             </div>
         </section>
-
         <!-- STATS -->
-        <section class="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Proyectos</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">10</div>
-                        <div class="stat-label">Años</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Satisfacción</div>
-                    </div>
-                </div>
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-target="500">0+</div>
+                <p>Proyectos</p>
             </div>
-        </section>
-
-        <!-- SERVICIOS -->
-        <section id="servicios" class="servicios">
-            <div class="container">
-                <h2 class="section-title">Nuestros servicios</h2>
-                <p class="section-subtitle">Soluciones integrales para tu hogar</p>
-                
-                <div class="servicios-grid">
-                    <div class="servicio-card">
-                        <div class="servicio-icon">🏗️</div>
-                        <h3>Construcción</h3>
-                        <p>Obra nueva, ampliaciones, reformas integrales.</p>
-                    </div>
-                    <div class="servicio-card">
-                        <div class="servicio-icon">🔧</div>
-                        <h3>Plomería</h3>
-                        <p>Instalaciones, reparaciones, pérdidas de agua.</p>
-                    </div>
-                    <div class="servicio-card">
-                        <div class="servicio-icon">⚡</div>
-                        <h3>Electricidad</h3>
-                        <p>Instalaciones, tableros, reparaciones.</p>
-                    </div>
-                    <div class="servicio-card">
-                        <div class="servicio-icon">🔨</div>
-                        <h3>Herrería</h3>
-                        <p>Puertas, rejas, portones, barandas.</p>
-                    </div>
-                    <div class="servicio-card">
-                        <div class="servicio-icon">🎨</div>
-                        <h3>Pintura y Durlock</h3>
-                        <p>Pintura interior/exterior y durlock.</p>
-                    </div>
-                    <div class="servicio-card">
-                        <div class="servicio-icon">🧱</div>
-                        <h3>Albañilería</h3>
-                        <p>Revoques, contrapisos, cerámicos.</p>
-                    </div>
-                    <div class="servicio-card">
-                        <div class="servicio-icon">🛠️</div>
-                        <h3>Reparaciones</h3>
-                        <p>Todo tipo de arreglos en el hogar.</p>
-                    </div>
-                </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="10">0</div>
+                <p>Años</p>
             </div>
-        </section>
-
-        <!-- TRABAJOS REALIZADOS (dinámico) -->
-        <section id="trabajos" class="trabajos">
-            <div class="container">
-                <h2 class="section-title">Trabajos realizados</h2>
-                <p class="section-subtitle">Algunos de nuestros proyectos</p>
-                
-                <div class="trabajos-grid" id="trabajos-grid">
-                    <!-- Ejemplos fijos (se mantienen siempre) -->
-                    <div class="trabajo-card">
-                        <div class="trabajo-img">
-                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=500" alt="Construcción" loading="lazy">
-                            <span class="trabajo-badge">Construcción</span>
-                        </div>
-                        <div class="trabajo-content">
-                            <h3>Ampliación de vivienda</h3>
-                            <p>2 habitaciones y baño en González Catán.</p>
-                        </div>
-                    </div>
-                    <div class="trabajo-card">
-                        <div class="trabajo-img">
-                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500" alt="Plomería" loading="lazy">
-                            <span class="trabajo-badge">Plomería</span>
-                        </div>
-                        <div class="trabajo-content">
-                            <h3>Renovación de baño</h3>
-                            <p>Cambio de cañerías en Guernica.</p>
-                        </div>
-                    </div>
-                    <div class="trabajo-card">
-                        <div class="trabajo-img">
-                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500" alt="Electricidad" loading="lazy">
-                            <span class="trabajo-badge">Electricidad</span>
-                        </div>
-                        <div class="trabajo-content">
-                            <h3>Instalación eléctrica</h3>
-                            <p>Tablero general en comercio.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="100">0%</div>
+                <p>Satisfacción</p>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- GALERÍA (dinámica, oculta hasta que haya imágenes) -->
+<!-- SERVICIOS -->
+<section id="servicios" class="servicios">
+    <div class="container">
+        <h2 class="section-title">Nuestros servicios</h2>
+        <p class="section-subtitle">Soluciones integrales para tu hogar</p>
+        
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <div class="servicio-icon">🏗️</div>
+                <h3>Construcción</h3>
+                <p>Obra nueva, ampliaciones, reformas integrales.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🔧</div>
+                <h3>Plomería</h3>
+                <p>Instalaciones, reparaciones, pérdidas de agua.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">⚡</div>
+                <h3>Electricidad</h3>
+                <p>Instalaciones, tableros, reparaciones.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🔨</div>
+                <h3>Herrería</h3>
+                <p>Puertas, rejas, portones, barandas.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🎨</div>
+                <h3>Pintura y Durlock</h3>
+                <p>Pintura interior/exterior y durlock.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🧱</div>
+                <h3>Albañilería</h3>
+                <p>Revoques, contrapisos, cerámicos.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🛠️</div>
+                <h3>Reparaciones</h3>
+                <p>Todo tipo de arreglos en el hogar.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRABAJOS REALIZADOS (100% DINÁMICOS - SIN EJEMPLOS FIJOS) -->
+<section id="trabajos" class="trabajos">
+    <div class="container">
+        <h2 class="section-title">Trabajos realizados</h2>
+        <p class="section-subtitle">Algunos de nuestros proyectos</p>
+        
+        <!-- Grid completamente vacío - se llena desde el admin -->
+        <div class="trabajos-grid" id="trabajos-grid"></div>
+    </div>
+</section>
+        <!-- GALERÍA (100% DINÁMICA) -->
         <section id="galeria" class="galeria">
             <div class="container">
                 <h2 class="section-title">Galería de obras</h2>
@@ -627,82 +188,108 @@
         </section>
 
         <!-- CONTACTO -->
-        <section id="contacto" class="contacto" style="background: var(--primary); color: white; padding: 80px 0;">
+        <section id="contacto" class="contacto">
             <div class="container">
-                <h2 class="section-title" style="color: white;">Contacto</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Respondemos a la brevedad</p>
+                <h2 class="section-title">Contacto</h2>
+                <p class="section-subtitle">Respondemos a la brevedad</p>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
-                            <i class="fab fa-whatsapp" style="font-size: 32px; color: var(--secondary);"></i>
-                            <h3 style="margin: 10px 0;">Atención general</h3>
-                            <a href="https://wa.me/5491159085736" style="color: white; text-decoration: none; font-weight: 600;">11-5908-5736</a>
+                <div class="contacto-grid">
+                    <div class="contacto-info">
+                        <div class="contacto-card">
+                            <i class="fab fa-whatsapp"></i>
+                            <h3>Atención general</h3>
+                            <a href="https://wa.me/5491159085736" class="contacto-link" target="_blank">11-5908-5736</a>
+                            <p class="contacto-desc">Respuesta rápida · Consultas generales</p>
                         </div>
-                        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
-                            <i class="fab fa-whatsapp" style="font-size: 32px; color: var(--secondary);"></i>
-                            <h3 style="margin: 10px 0;">Presupuestos</h3>
-                            <a href="https://wa.me/5491126866846" style="color: white; text-decoration: none; font-weight: 600;">11-2686-6846</a>
+                        
+                        <div class="contacto-card">
+                            <i class="fab fa-whatsapp"></i>
+                            <h3>Presupuestos</h3>
+                            <a href="https://wa.me/5491126866846" class="contacto-link" target="_blank">11-2686-6846</a>
+                            <p class="contacto-desc">Obras grandes · Presupuestos</p>
                         </div>
-                        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
-                            <i class="fas fa-envelope" style="font-size: 32px; color: var(--secondary);"></i>
-                            <h3 style="margin: 10px 0;">Email</h3>
-                            <a href="mailto:jservicios636@gmail.com" style="color: white; text-decoration: none;">jservicios636@gmail.com</a>
+                        
+                        <div class="contacto-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <a href="mailto:jservicios636@gmail.com" class="contacto-link">jservicios636@gmail.com</a>
+                            <p class="contacto-desc">Consultas y presupuestos</p>
                         </div>
-                        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
-                            <i class="fas fa-map-marker-alt" style="font-size: 32px; color: var(--secondary);"></i>
-                            <h3 style="margin: 10px 0;">Ubicación</h3>
-                            <p style="color: white;">Guernica, Buenos Aires</p>
+                        
+                        <div class="contacto-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Ubicación</h3>
+                            <p class="contacto-link">Guernica, Buenos Aires</p>
+                            <p class="contacto-desc">Atendemos en toda la zona</p>
                         </div>
                     </div>
-                    <div style="border-radius: 20px; overflow: hidden;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26240!2d-58.383759!3d-34.603739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf0f8c7f6d%3A0x2b1d5e8c0b8b9c0f!2sGuernica%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    
+                    <div class="contacto-mapa">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26240!2d-58.383759!3d-34.603739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf0f8c7f6d%3A0x2b1d5e8c0b8b9c0f!2sGuernica%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar" 
+                            loading="lazy"
+                            title="Ubicación de JServicios en Guernica">
+                        </iframe>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-        <!-- FOOTER -->
-    <footer class="footer" style="background: #2C1A0B; color: white; padding: 60px 0 20px;">
+
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
-                <div>
-                    <!-- LOGO SECUNDARIO (se carga desde JSONBin) -->
-                    <img src="" alt="JServicios" style="width: 70px; margin-bottom: 15px;" id="logo-secundario">
-                    <h3 style="color: var(--secondary);">JServicios</h3>
-                    <p style="color: rgba(255,255,255,0.7);">Construcción · Plomería · Electricidad · Herrero · Pintura · Durlock</p>
-                    <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 15px;">10 años de experiencia</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <!-- Logo secundario dinámico -->
+                    <img src="" alt="JServicios" class="footer-logo-img" id="logo-secundario">
+                    <h3>JServicios</h3>
+                    <p>Construcción · Plomería · Electricidad · Herrero · Pintura · Durlock</p>
+                    <p class="footer-matricula">10 años de experiencia</p>
+                    <div class="google-badge">
+                        <i class="fas fa-check-circle"></i> Verificado por Google
+                    </div>
                 </div>
-                <div>
-                    <h4 style="color: var(--secondary); margin-bottom: 20px;">Enlaces</h4>
-                    <ul style="list-style: none;">
-                        <li style="margin: 10px 0;"><a href="#inicio" style="color: rgba(255,255,255,0.7); text-decoration: none;">Inicio</a></li>
-                        <li style="margin: 10px 0;"><a href="#servicios" style="color: rgba(255,255,255,0.7); text-decoration: none;">Servicios</a></li>
-                        <li style="margin: 10px 0;"><a href="#trabajos" style="color: rgba(255,255,255,0.7); text-decoration: none;">Trabajos</a></li>
-                        <li style="margin: 10px 0;"><a href="#galeria" style="color: rgba(255,255,255,0.7); text-decoration: none;">Galería</a></li>
+                
+                <div class="footer-links">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#trabajos">Trabajos</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 style="color: var(--secondary); margin-bottom: 20px;">Contacto</h4>
-                    <p style="color: rgba(255,255,255,0.7); margin: 10px 0;"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>11-5908-5736</p>
-                    <p style="color: rgba(255,255,255,0.7); margin: 10px 0;"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>11-2686-6846</p>
-                    <p style="color: rgba(255,255,255,0.7); margin: 10px 0;"><i class="fas fa-envelope" style="margin-right: 10px;"></i>jservicios636@gmail.com</p>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fab fa-whatsapp"></i> 11-5908-5736</p>
+                    <p><i class="fab fa-whatsapp"></i> 11-2686-6846</p>
+                    <p><i class="fas fa-envelope"></i> jservicios636@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Guernica, Buenos Aires</p>
                 </div>
             </div>
-            <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4);">
+            
+            <div class="footer-bottom">
                 <p>&copy; 2026 JServicios · Todos los derechos reservados</p>
+                <p class="creator">
+                    Desarrollo web profesional · <a href="mailto:jservicios636@gmail.com">Contactar</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPT PARA CARGAR DATOS DESDE JSONBIN (conecta con el admin) -->
+    <!-- SCRIPTS -->
+    <script src="main.js"></script>
+    
+    <!-- SCRIPT DE CARGA DE DATOS DESDE JSONBIN (CONECTA CON EL ADMIN) -->
     <script>
-        // Configuración de JSONBin (mismos datos que en admin.html)
+        // Configuración de JSONBin
         const JB_KEY = '0k56geaVp9BVFrqiyzkWY0hZn9I';
         const JB_BIN = '69a576e43b1c97be9abdd5e';
 
-        // Función para cargar los logos desde JSONBin
-        async function cargarLogos() {
+        async function cargarDatos() {
             try {
                 const res = await fetch(`https://api.jsonbin.io/v3/b/${JB_BIN}/latest`, {
                     headers: { 'X-Master-Key': JB_KEY }
@@ -710,38 +297,34 @@
                 if (!res.ok) return;
                 const data = (await res.json()).record;
 
-                // Logo principal
+                // ==========================================
+                // 1. CARGAR LOGOS
+                // ==========================================
                 const logosPrincipales = data['logo-principal'] || [];
                 if (logosPrincipales.length > 0) {
                     const ultimo = logosPrincipales[logosPrincipales.length - 1];
                     document.getElementById('logo-principal').src = ultimo.url;
                 }
 
-                // Logo secundario
                 const logosSecundarios = data['logo-secundario'] || [];
                 if (logosSecundarios.length > 0) {
                     const ultimo = logosSecundarios[logosSecundarios.length - 1];
                     document.getElementById('logo-secundario').src = ultimo.url;
-                    
-                    // También actualizar el favicon
-                    const favicon = document.getElementById('favicon');
-                    if (favicon) favicon.href = ultimo.url;
+                    document.getElementById('favicon').href = ultimo.url;
                 }
 
-                // Cargar trabajos
+                // ==========================================
+                // 2. CARGAR TRABAJOS (SIN EJEMPLOS FIJOS)
+                // ==========================================
                 const trabajos = data.trabajos || [];
-                const grid = document.getElementById('trabajos-grid');
+                const gridTrabajos = document.getElementById('trabajos-grid');
                 
-                if (trabajos.length > 0 && grid) {
-                    // Eliminar trabajos previos del admin para no duplicar
-                    const adminCards = grid.querySelectorAll('.trabajo-card[data-admin]');
-                    adminCards.forEach(card => card.remove());
+                if (trabajos.length > 0 && gridTrabajos) {
+                    gridTrabajos.innerHTML = ''; // Limpiar completamente
                     
-                    // Agregar los nuevos trabajos al principio
                     trabajos.slice().reverse().forEach(trabajo => {
                         const card = document.createElement('div');
                         card.className = 'trabajo-card';
-                        card.setAttribute('data-admin', 'true');
                         card.innerHTML = `
                             <div class="trabajo-img">
                                 <img src="${trabajo.url}" alt="${trabajo.titulo || 'Trabajo'}" loading="lazy"/>
@@ -751,27 +334,29 @@
                                 <h3>${trabajo.titulo || 'Trabajo realizado'}</h3>
                                 ${trabajo.descripcion ? `<p>${trabajo.descripcion}</p>` : ''}
                             </div>`;
-                        grid.insertBefore(card, grid.firstChild);
+                        gridTrabajos.appendChild(card);
                     });
                 }
 
-                // Cargar galería
+                // ==========================================
+                // 3. CARGAR GALERÍA
+                // ==========================================
                 const galeria = data.galeria || [];
                 const seccionGaleria = document.getElementById('galeria');
                 const navGaleria = document.getElementById('nav-galeria');
-                const gGrid = document.getElementById('galeria-grid');
+                const gridGaleria = document.getElementById('galeria-grid');
 
                 if (galeria.length > 0) {
                     if (seccionGaleria) seccionGaleria.style.display = 'block';
                     if (navGaleria) navGaleria.style.display = 'list-item';
 
-                    if (gGrid) {
-                        gGrid.innerHTML = '';
+                    if (gridGaleria) {
+                        gridGaleria.innerHTML = '';
                         galeria.slice().reverse().forEach(img => {
                             const item = document.createElement('div');
                             item.className = 'galeria-item';
                             item.innerHTML = `<img src="${img.url}" alt="${img.titulo || 'Galería'}" loading="lazy">`;
-                            gGrid.appendChild(item);
+                            gridGaleria.appendChild(item);
                         });
                     }
                 }
@@ -781,38 +366,7 @@
         }
 
         // Cargar al iniciar
-        document.addEventListener('DOMContentLoaded', cargarLogos);
-
-        // Menú responsive para móvil
-        document.getElementById('menuToggle')?.addEventListener('click', function() {
-            const navMenu = document.getElementById('navMenu');
-            if (navMenu.style.display === 'block') {
-                navMenu.style.display = 'none';
-            } else {
-                navMenu.style.display = 'block';
-            }
-        });
-
-        // Marcar link activo al hacer scroll
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        document.addEventListener('DOMContentLoaded', cargarDatos);
     </script>
 </body>
-    </html>
+</html>
