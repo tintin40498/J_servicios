@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J Servicios | Construcción Profesional</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Font Awesome para íconos (alternativa a imágenes) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- HEADER MODERNO -->
+    <!-- HEADER CON ANIMACIÓN -->
     <header class="hero">
-        <div class="hero-overlay"></div>
+        <div class="hero-bg-animated"></div>
         <div class="hero-content">
             <div class="logo-container">
                 <i class="fas fa-hard-hat logo-icon"></i>
@@ -24,55 +22,178 @@
                 <a href="#galeria" class="btn btn-outline">Ver trabajos</a>
             </div>
         </div>
-        <div class="hero-shape"></div>
+        <div class="hero-shape">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
     </header>
 
-    <!-- SERVICIOS SIN IMÁGENES -->
+    <!-- SERVICIOS CON TARJETAS ANIMADAS -->
     <section class="servicios">
         <h2>Nuestros <span>Servicios</span></h2>
-        <div class="servicios-grid" id="servicios-container"></div>
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <div class="card-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Construcción</h3>
+                <p>Obras nuevas, remodelaciones y ampliaciones con materiales de primera calidad</p>
+                <div class="card-shine"></div>
+            </div>
+            <div class="servicio-card">
+                <div class="card-icon">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <h3>Plomería</h3>
+                <p>Instalaciones sanitarias, reparaciones de urgencia y mantenimiento preventivo</p>
+                <div class="card-shine"></div>
+            </div>
+            <div class="servicio-card">
+                <div class="card-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Electricidad</h3>
+                <p>Instalaciones eléctricas residenciales e industriales, tableros y iluminación</p>
+                <div class="card-shine"></div>
+            </div>
+            <div class="servicio-card">
+                <div class="card-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Herrería</h3>
+                <p>Estructuras metálicas, portones, rejas y diseños personalizados en hierro</p>
+                <div class="card-shine"></div>
+            </div>
+            <div class="servicio-card">
+                <div class="card-icon">
+                    <i class="fas fa-paint-roller"></i>
+                </div>
+                <h3>Pintura</h3>
+                <p>Pintura interior y exterior, acabados decorativos y texturados</p>
+                <div class="card-shine"></div>
+            </div>
+            <div class="servicio-card">
+                <div class="card-icon">
+                    <i class="fas fa-border-all"></i>
+                </div>
+                <h3>Durlock</h3>
+                <p>Tabiques, cielorrasos y todo tipo de construcciones en placa de yeso</p>
+                <div class="card-shine"></div>
+            </div>
+        </div>
     </section>
 
-    <!-- GALERÍA DE PROYECTOS (sin imágenes) -->
-    <section class="proyectos" id="galeria">
+    <!-- ESTADÍSTICAS CON CONTADORES ANIMADOS -->
+    <section class="estadisticas">
+        <div class="estadisticas-container">
+            <div class="estadistica-item">
+                <div class="estadistica-numero" data-target="150">0</div>
+                <p>Proyectos Completados</p>
+            </div>
+            <div class="estadistica-item">
+                <div class="estadistica-numero" data-target="200">0</div>
+                <p>Clientes Satisfechos</p>
+            </div>
+            <div class="estadistica-item">
+                <div class="estadistica-numero" data-target="10">0</div>
+                <p>Años de Experiencia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA (PLACEHOLDERS ELEGANTES PARA TUS FOTOS) -->
+    <section class="galeria" id="galeria">
         <h2>Trabajos <span>Realizados</span></h2>
-        <div class="proyectos-grid" id="proyectos-lista"></div>
+        <div class="galeria-grid" id="galeria-container">
+            <!-- Estos son placeholders con estilo - cuando subas fotos, se reemplazan -->
+            <div class="galeria-item placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Tu foto aquí</span>
+                </div>
+            </div>
+            <div class="galeria-item placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Tu foto aquí</span>
+                </div>
+            </div>
+            <div class="galeria-item placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Tu foto aquí</span>
+                </div>
+            </div>
+            <div class="galeria-item placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Tu foto aquí</span>
+                </div>
+            </div>
+            <div class="galeria-item placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Tu foto aquí</span>
+                </div>
+            </div>
+            <div class="galeria-item placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Tu foto aquí</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- CONTACTO DESTACADO -->
+    <!-- CONTACTO CON EFECTOS -->
     <section class="contacto" id="contacto">
         <h2>Contacto <span>Directo</span></h2>
-        <div class="contacto-container">
+        <div class="contacto-grid">
             <div class="contacto-card">
                 <i class="fas fa-user-tie"></i>
-                <h3>Soporte</h3>
-                <p>Martin Junco</p>
-                <a href="tel:1159085736" class="contacto-link">📞 11-5908-5736</a>
+                <h3>Martin Junco</h3>
+                <p class="contacto-rol">Soporte</p>
+                <a href="tel:1159085736" class="contacto-link">
+                    <i class="fas fa-phone"></i> 11-5908-5736
+                </a>
             </div>
             <div class="contacto-card">
                 <i class="fas fa-helmet-safety"></i>
-                <h3>Obras</h3>
-                <p>Jorge Junco</p>
-                <a href="tel:1126866846" class="contacto-link">📞 11-2686-6846</a>
+                <h3>Jorge Junco</h3>
+                <p class="contacto-rol">Obras</p>
+                <a href="tel:1126866846" class="contacto-link">
+                    <i class="fas fa-phone"></i> 11-2686-6846
+                </a>
+            </div>
+            <div class="contacto-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p class="contacto-rol">Consultas</p>
+                <a href="mailto:jservicios636@gmail.com" class="contacto-link">
+                    <i class="fas fa-envelope"></i> jservicios636@gmail.com
+                </a>
             </div>
         </div>
-        <div class="contacto-email">
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:jservicios636@gmail.com">jservicios636@gmail.com</a>
-        </div>
         <div class="contacto-social">
-            <a href="https://wa.me/541159085736" class="btn btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="https://instagram.com/j_servicios_" class="btn btn-ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://wa.me/541159085736" class="btn btn-wa" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://instagram.com/j_servicios_" class="btn btn-ig" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/541159085736" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <footer>
         <p>© 2026 J Servicios · Todos los derechos reservados</p>
     </footer>
 
     <script src="script.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="js/animations.js"></script>
 </body>
-</html>
+    </html>
