@@ -3,13 +3,14 @@ function animateNumbers() {
     const counters = document.querySelectorAll('.estadistica-numero');
     
     counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        let count = 0;
+        const increment = Math.ceil(target / 50);
+        
         const updateCount = () => {
-            const target = parseInt(counter.getAttribute('data-target'));
-            const count = parseInt(counter.innerText);
-            
             if (count < target) {
-                const increment = Math.ceil(target / 50);
-                counter.innerText = Math.min(count + increment, target);
+                count = Math.min(count + increment, target);
+                counter.innerText = count;
                 setTimeout(updateCount, 20);
             } else {
                 counter.innerText = target;
@@ -24,10 +25,8 @@ function animateNumbers() {
 function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
     return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+        rect.bottom >= 0
     );
 }
 
@@ -80,21 +79,3 @@ window.addEventListener('scroll', () => {
     checkStatsVisibility();
     animateOnScroll();
 });
-
-// ===== EFECTO DE TYPING EN EL HEADER (OPCIONAL) =====
-const tagline = document.querySelector('.hero-tagline');
-if(tagline) {
-    const text = tagline.textContent;
-    tagline.textContent = '';
-    let i = 0;
-    
-    function typeWriter() {
-        if(i < text.length) {
-            tagline.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        }
-    }
-    
-    setTimeout(typeWriter, 1000);
-}
